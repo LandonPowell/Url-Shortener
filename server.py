@@ -1,17 +1,20 @@
-import web
+import web  # For the web server.
+import json # For the database.
+
+database = json.loads(open('database.json').read())
 
 urls = (
     '/([a-z\d]+)', 'redirect',
-    '/.*', 'static'
+    '/.*',         'index'
 )
 
 class redirect:
     def GET(self, link):
-        return web.redirect(database[link])
+        return web.redirect(database['links'][link])
 
-class static:
+class index:
     def GET(self):
-        return 'meme'
+        return open('index.html').read()
 
 if __name__ == "__main__":
     app = web.application(urls, globals())

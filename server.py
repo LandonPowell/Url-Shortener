@@ -10,7 +10,7 @@ def to36(number):
         base36 = alphabet[i] + base36
     return base36
 
-# Loads the database['counter'] and database['links'].
+# Loads the database
 database = json.loads(open('database.json').read())
 
 urls = (
@@ -30,7 +30,8 @@ class redirect:
 class index:
     def GET(self):
         return open('index.html').read()
-    def POST(self):
+    def POST(self): # Where's the 0xBEEF?
+
         shortURL = to36(database['counter'])
         database['counter'] += 1
 
@@ -39,7 +40,11 @@ class index:
         print 'New link created at: ' + shortURL
         print 'For: ' + web.input()['longLink']
 
+        with open('database.json', 'w') as f: json.dump(database,f)
+
+        # Gives the user their link.
         return 'http://127.0.0.1:8080/' + shortURL
+
 
 
 # This starts the webserver.

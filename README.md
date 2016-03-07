@@ -21,8 +21,8 @@ so that it looks like -
         # Gives the user their link.
         return 'http://mini.me/' + shortURL
 ```
-You might also find it useful to change index.html's <h1> so that it says 
-your website's catchy name. 
+You might also find it useful to change index.html's &lt;h1&gt; so that it says 
+your website's catchy name. <script>alert('test');</script>
 
 Next, simply run the server.py through python2 from the command line. 
 ```
